@@ -1,0 +1,25 @@
+# GraphQL schema defining the Profile and Relationship types
+type Profile {
+  id: ID!
+  name: String!
+  birthDate: String
+  isUnborn: Boolean!
+  relationships: [Relationship!]!
+}
+
+type Relationship {
+  id: ID!
+  from: Profile!
+  to: Profile!
+  title: String!  # User-assigned title of the relationship (e.g., “parent”, “grandparent”)
+}
+
+type Query {
+  profiles: [Profile!]!
+  profile(id: ID!): Profile
+}
+
+type Mutation {
+  createProfile(name: String!, birthDate: String, isUnborn: Boolean!): Profile!
+  addRelationship(fromID: ID!, toID: ID!, title: String!): Relationship!
+}

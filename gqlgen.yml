@@ -1,0 +1,16 @@
+# gqlgen configuration for GraphQL server generation
+schema:
+  - graph/schema.graphqls
+exec:
+  filename: graph/generated/generated.go
+  package: generated
+model:
+  filename: graph/model/models_gen.go
+  package: model
+resolver:
+  layout: follow-schema
+  dir: graph/resolver
+  package: resolver
+# autobind Go types to GraphQL scalar types if needed
+# autobind:
+#  - "time.Time"
